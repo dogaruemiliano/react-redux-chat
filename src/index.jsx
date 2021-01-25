@@ -7,9 +7,13 @@ import '../public/stylesheet/index.scss'
 
 import configureStore from './store/configureStore'
 
+const initialState = {
+  //cities: []
+}
+
 
 ReactDOM.render(
-  <Provider store={configureStore()}>
+  <Provider store={configureStore(initialState)}>
     <App />
   </Provider>,
   document.getElementById('root')

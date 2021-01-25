@@ -4,8 +4,8 @@ import { combineReducers } from 'redux'
 
 
 // Combine reducers
-const rootReducers = combineReducers({
+const rootReducer = combineReducers({
   changeMe: (state = null, action) => state
 })
 
-export default rootReducers
+export default rootReducer
