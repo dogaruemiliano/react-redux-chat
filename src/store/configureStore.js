@@ -2,16 +2,15 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import reduxPromise from 'redux-promise';
 import { createLogger } from 'redux-logger'
 import rootReducer from '../reducers'
-// import DevTools from '../containers/DevTools'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 const configureStore = (preloadedState = null) => {
   const store = createStore(
     rootReducer,
     preloadedState,
-    // compose(
-    applyMiddleware(reduxPromise, createLogger())
-      // DevTools.instrument()
-    // )
+    composeWithDevTools(
+      applyMiddleware(reduxPromise, createLogger())
+    )
   )
 
   if (module.hot) {
