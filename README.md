@@ -1,7 +1,7 @@
 Simple React + Redux starter with the following config:
 
     React, ReactDOM
-    Redux, React-Redux
+    Redux, React-Redux and Redux DevTools Extension
     Webpack 5
     Babel 7 and React presets
     Bootstrap (scss only, loaded from a cdn in index.scss)
