@@ -1,9 +1,12 @@
 import React from 'react';
+import MessageList from '../containers/MessageList'
+import ChannelList from '../containers/ChannelList'
 
 const App = () => {
   return (
-    <div className="test">
-      <p>React + Redux App</p>
+    <div className="app">
+      <ChannelList/>
+      <MessageList/>
     </div>
   );
 }
