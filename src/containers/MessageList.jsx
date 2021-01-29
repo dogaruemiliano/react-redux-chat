@@ -9,8 +9,8 @@ import { fetchMessages } from '../actions'
 class MessageList extends Component {
   componentDidMount() {
     console.log("ComponentDidMount", this.props)
-    this.props.fetchMessages(this.props.selectedChannelId)
-    this.intervalId = setInterval(() => this.props.fetchMessages(this.props.selectedChannelId), 200)
+    this.props.fetchMessages(this.props.channelFromParams)
+    this.intervalId = setInterval(() => this.props.fetchMessages(this.props.channelFromParams), 20000)
   }
 
   componentWillUnmount() {
@@ -22,7 +22,7 @@ class MessageList extends Component {
       <div className="col-sm-8 p-0">
         <div className="channel-container">
           <div className="channel-info">
-            <h1> Channel #{this.props.selectedChannelId}</h1>
+            <h1> Channel #{this.props.channelFromParams}</h1>
           </div>
           <div className="message-list">
             {this.props.messages.map(message => {
@@ -32,7 +32,7 @@ class MessageList extends Component {
             }
           </div>
           <div>
-            <MessageForm/>
+            <MessageForm channelFromParams={this.props.channelFromParams}/>
           </div>
         </div>
       </div>
@@ -42,8 +42,7 @@ class MessageList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    messages: state.messages,
-    selectedChannelId: state.selectedChannelId
+    messages: state.messages
   }
 }
 

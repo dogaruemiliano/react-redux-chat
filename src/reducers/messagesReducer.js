@@ -8,9 +8,6 @@ export default function(state = [], action) {
       const stateCopy = state.slice(0)
       stateCopy.push(action.payload)
       return stateCopy
-    case SELECT_CHANNEL:
-      console.log("payload inside messageReducer", action.payload)
-      return []
     default:
       return state
   }

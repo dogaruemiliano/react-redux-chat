@@ -13,7 +13,7 @@ class MessageForm extends Component {
       content: event.target.childNodes[0].value
     }
     event.target.childNodes[0].value = ""
-    this.props.postMessage(this.props.selectedChannelId, data)
+    this.props.postMessage(this.props.channelFromParams, data)
   }
 
   render() {
@@ -28,8 +28,7 @@ class MessageForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    userName: state.userName,
-    selectedChannelId: state.selectedChannelId
+    userName: state.userName
   }
 }
 

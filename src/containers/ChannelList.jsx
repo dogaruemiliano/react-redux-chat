@@ -6,24 +6,26 @@ import Channel from './Channel'
 import { fetchMessages } from '../actions'
 
 class ChannelList extends Component {
-  componentDidUpdate() {
-    this.props.fetchMessages(this.props.selectedChannelId)
+  componentDidUpdate(prevProps) {
+    if(this.props.channelFromParams !== prevProps.channelFromParams){
+      this.props.fetchMessages(this.props.channelFromParams)
+    }
   }
 
   render() {
     return (
       <div className="col-sm-4 p-0">
-        <div className="channel-list">
+        <ul className="channel-list">
           {this.props.channels.map(channel => {
             return(
               <Channel
                 channelId={channel}
-                selectedChannelId={this.props.selectedChannelId}
+                channelFromParams={this.props.channelFromParams}
                 key={channel}
                 />
             )
           })}
-        </div>
+        </ul>
       </div>
     )
   }
@@ -32,8 +34,7 @@ class ChannelList extends Component {
 const mapStateToProps = (state) => {
   console.log("State in mapStateToProps for ChannelList", state)
   return {
-    channels: state.channels,
-    selectedChannelId: state.selectedChannelId
+    channels: state.channels
   }
 }
 

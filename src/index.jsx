@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
+import { createBrowserHistory as history } from 'history'
 
 import App from './components/App';
 import '../public/stylesheet/index.scss'
@@ -8,9 +10,8 @@ import '../public/stylesheet/index.scss'
 import configureStore from './store/configureStore'
 
 const initialState = {
-  userName: prompt("What's your username?") || `anonymous${Math.floor(Math.random() * 1000000)}`,
-  selectedChannelId: 'team1',
-  channels: ['team1', 'team2', 'forest'],
+  userName: `anonymous${Math.floor(Math.random() * 1000000)}`, //prompt("What's your username?") ||
+   channels: ['team1', 'team2', 'forest'],
   messages: [
     {
       "author":"anonymous92",
@@ -28,7 +29,12 @@ const initialState = {
 
 ReactDOM.render(
   <Provider store={configureStore(initialState)}>
-    <App />
+    <Router history={history}>
+      <Switch>
+        <Route path="/:channel" component={App} />
+        <Redirect from="/" to="/team1" />
+      </Switch>
+    </Router>
   </Provider>,
   document.getElementById('root')
 );

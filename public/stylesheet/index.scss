@@ -11,6 +11,10 @@ body {
   font-family: Helvetica;
   height: 100vh;
 }
+
+ul {
+  list-style-type: none;
+}
 .app {
   // margin-top: 20px;
   // margin-bottom: 20px;
@@ -120,9 +124,12 @@ button {
     padding-bottom: 6px;
     color: $darkGrey;
     cursor: default;
+    text-decoration: none;
 
     &:hover {
       color: $darkGrey;
+      text-decoration: none;
+
     }
   }
 
