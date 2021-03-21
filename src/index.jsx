@@ -10,7 +10,7 @@ import '../public/stylesheet/index.scss'
 import configureStore from './store/configureStore'
 
 const initialState = {
-  userName: `anonymous${Math.floor(Math.random() * 1000000)}`, //prompt("What's your username?") ||
+  userName: prompt("What's your username?") || `anonymous${Math.floor(Math.random() * 1000000)}`,
    channels: ['team1', 'team2', 'forest'],
   messages: [
     {
